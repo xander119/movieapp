@@ -1,0 +1,15 @@
+<h1> Regular Users 	</h1>
+
+<table>
+ <tr>
+	<th>Name</th>
+	<th>Email</th>
+ </tr>
+ 
+	<% @rusers.each do |user| %>
+	<tr>
+		<td><%= user.name %></td>
+		<td><%= user.email %></td>
+	</tr>
+	<%end%>
+</table>

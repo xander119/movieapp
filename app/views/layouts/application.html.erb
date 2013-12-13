@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Moviesapp</title>
+  <%= stylesheet_link_tag  "http://ajax.googleapis.com/ajax/libs/jqueryui/1.7.2/themes/redmond/jquery-ui.css",  "application", :media => "all" %>
+  <%= javascript_include_tag "http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js", "http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.1/jquery-ui.min.js", "application", "rails.validations" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+<div id="banner">
+	<%= image_tag("movie_night.jpg", :size => "100x50") %>
+	<%= @page_title || "Movies We Love" %>
+</div>
+<div id="nav">
+<ul>
+	<% if !signed_in? %>
+		<li><%= link_to "Sign In", signin_path %></li>		
+	<% else %>
+		<li>Signed in as <%= @current_user.name %></li>
+		<li><%= link_to "Sign Out", signout_path %></li>
+	<%end %>
+</ul>
+	<%= link_to "About Us", about_path %>
+	<%= link_to "Movies news", 'http://oscar.go.com' %>
+	<%= mail_to "alexwang119@yahoo.com", "Contact us" %>
+	<%= link_to "Movies", movies_path %>
+</div>
+<div id="search">
+	<%= render :partial => 'movies/search' %>
+</div>
+
+<%= yield %>
+
+<p id="notice" ><%= notice %> </p>
+<h3>This is the website for DT354-3</h3>
+
+</body>
+</html>
